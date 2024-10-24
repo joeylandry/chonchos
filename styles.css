@@ -1,0 +1,250 @@
+/* Keyframes for popping in and fading out */
+@keyframes fadeInPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes compressAndExpand {
+    0% {
+        transform: scaleX(0); /* Start fully compressed horizontally */
+        opacity: 0; /* Hidden */
+    }
+    50% {
+        opacity: 1; /* Fade in halfway through the animation */
+    }
+    100% {
+        transform: scaleX(1); /* Fully stretched to original size */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Remove default margins and padding from body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+}
+
+/* Fade in pop animation class */
+.logo-fade-in {
+    animation: fadeInPop 1s ease forwards;
+    opacity: 1; /* Ensure it reaches full opacity after animation */
+    transform: scale(1);
+}
+
+/* Full-screen background with centered logo */
+#home-section {
+    height: 100vh;
+    background: url('lobby.webp') no-repeat center;
+    background-position: -15px center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    justify-content: center;  /* Center children horizontally */
+    align-items: flex-start;  /* Align items at the top */
+}
+
+#home-section img {
+    width: 350px;
+    filter: invert(100%);
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0; /* Start with opacity 0 for fade-in */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    margin-top: -26px; /* Adjust vertical position */
+    transform: scale(0.5); /* Start with smaller scale for the pop effect */
+}
+
+/* Visibility classes for scroll */
+#home-section img.logo-visible {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* Full size */
+}
+
+#home-section img.logo-hidden {
+    opacity: 0; /* Fully fades out */
+    transform: scale(0.8); /* Slightly shrink */
+    z-index: -1; /* Move it behind */
+}
+
+/* Header styling */
+header {
+    background-color: #000000;
+    padding: 0;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the header sits below the logo and nav */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-100px); /* Initially positioned above view */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Anchor tag for clickable logo */
+header a.logo-link {
+    z-index: 1005; /* Ensure the clickable area is on top */
+    display: block;
+    position: relative; /* Ensure it can be clicked */
+}
+
+/* Adjusted logo z-index for visibility */
+header img.head-logo {
+    width: 350px;
+    position: relative;
+    top: 0;
+    transform: scaleX(0);
+    opacity: 0;
+    filter: invert(100%);
+    z-index: 1006; /* Ensure the logo is above everything */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    cursor: pointer; /* Ensure it's a clickable pointer */
+}
+
+/* When visible, apply the expanding effect */
+header img.head-logo.logo-visible {
+    animation: compressAndExpand 1s ease forwards;
+}
+
+/* Make header visible with smooth slide down */
+header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth slide up when hidden */
+header.hidden {
+    opacity: 0;
+    transform: translateY(-100px); /* Move the header back up out of view */
+}
+
+/* Navigation styling */
+nav {
+    position: fixed;
+    top: 16px;
+    left: 11.3%;
+    right: 11%;
+    width: auto;
+    z-index: 1003; /* Navigation sits below the logo but above the header */
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+}
+
+/* Left navigation group */
+.nav-left ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-left ul li {
+    margin-left: 2.5px;
+}
+
+/* Right navigation group */
+.nav-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.nav-right ul li {
+    margin-left: 1.5px;
+}
+
+/* Shared styles for the navigation links */
+nav ul li a {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px 15px;
+    display: block;
+    font-size: 18px;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+/* Pseudo-element for the underline effect */
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #8B6508;
+    transition: width 0.3s ease, left 0.3s ease;
+    z-index: 1;
+}
+
+nav ul li a:hover::before {
+    width: 50%;
+    left: 25%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        top: 0;
+        left: 10%;
+        right: 10%;
+    }
+
+    .nav-left ul, .nav-right ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-left ul li, .nav-right ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* Responsive adjustments for the header and logo */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    #home-section img {
+        width: 250px;
+    }
+
+    header img.head-logo {
+        width: 250px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    header {
+        height: 60px;
+    }
+}
