@@ -1,3 +1,4 @@
+
 /* Keyframes for popping in and fading out */
 @keyframes fadeInPop {
     0% {
@@ -10,21 +11,29 @@
     }
 }
 
-@keyframes compressAndExpand {
+/* New keyframe for opening effect */
+@keyframes openHorizontally {
     0% {
-        transform: scaleX(0); /* Start fully compressed horizontally */
-        opacity: 0; /* Hidden */
+        transform: scaleX(0); /* Start with zero width */
+        opacity: 0; /* Hidden at the start */
     }
     50% {
-        opacity: 1; /* Fade in halfway through the animation */
+        opacity: 1; /* Fade in halfway through */
     }
     100% {
-        transform: scaleX(1); /* Fully stretched to original size */
+        transform: scaleX(1); /* Full width */
         opacity: 1; /* Fully visible */
     }
 }
 
-/* Remove default margins and padding from body and html */
+.pattern-container {
+    background-color: transparent;
+    background-image: url('hotel-wallpaper-black.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -32,147 +41,141 @@ html, body {
     background-color: black;
 }
 
-/* Fade in pop animation class */
 .logo-fade-in {
     animation: fadeInPop 1s ease forwards;
-    opacity: 1; /* Ensure it reaches full opacity after animation */
+    opacity: 1;
     transform: scale(1);
 }
 
-/* Full-screen background with centered logo */
+/* Main logo fade-in effect */
+#home-section img.logo-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Main logo fade-out effect */
+#home-section img.logo-hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Fullscreen background */
 #home-section {
     height: 100vh;
-    background: url('lobby.webp') no-repeat center;
-    background-position: -15px center;
     background-size: cover;
-    background-attachment: fixed;
-    position: relative;
     display: flex;
-    justify-content: center;  /* Center children horizontally */
-    align-items: flex-start;  /* Align items at the top */
+    justify-content: center;
+    align-items: flex-start;
 }
 
 #home-section img {
-    width: 350px;
+    width: 125px;
+    height: auto;
     filter: invert(100%);
     z-index: 10;
     cursor: pointer;
-    opacity: 0; /* Start with opacity 0 for fade-in */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    margin-top: -26px; /* Adjust vertical position */
-    transform: scale(0.5); /* Start with smaller scale for the pop effect */
+    opacity: 0;
+    transform: scale(0.5);
+    margin-top: 2px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Visibility classes for scroll */
-#home-section img.logo-visible {
-    opacity: 1; /* Fully visible */
-    transform: scale(1); /* Full size */
-}
-
-#home-section img.logo-hidden {
-    opacity: 0; /* Fully fades out */
-    transform: scale(0.8); /* Slightly shrink */
-    z-index: -1; /* Move it behind */
-}
-
-/* Header styling */
-header {
-    background-color: #000000;
-    padding: 0;
-    height: 80px;
+/* Unified Header Container */
+.header-container {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensure the header sits below the logo and nav */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease, height 0.3s ease;
+    z-index: 100;
+    height: 50px;
+}
+
+.header-container.scrolled {
+    background-color: #000000;
+    height: 75px;
+}
+
+/* Preserved Original Navigation Styling */
+.persistent-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 50px;
+}
+
+.persistent-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+/* Header Styling */
+header {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transform: translateY(-100px); /* Initially positioned above view */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    height: 50px;
+    position: relative;
 }
 
-/* Anchor tag for clickable logo */
+/* Centered Logo in Header */
 header a.logo-link {
-    z-index: 1005; /* Ensure the clickable area is on top */
-    display: block;
-    position: relative; /* Ensure it can be clicked */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-/* Adjusted logo z-index for visibility */
 header img.head-logo {
-    width: 350px;
-    position: relative;
-    top: 0;
-    transform: scaleX(0);
+    width: 325px !important;
+    height: auto !important;
     opacity: 0;
+    width: 100%;
+    height: auto;
     filter: invert(100%);
-    z-index: 1006; /* Ensure the logo is above everything */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    cursor: pointer; /* Ensure it's a clickable pointer */
-}
-
-/* When visible, apply the expanding effect */
-header img.head-logo.logo-visible {
-    animation: compressAndExpand 1s ease forwards;
-}
-
-/* Make header visible with smooth slide down */
-header.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Smooth slide up when hidden */
-header.hidden {
-    opacity: 0;
-    transform: translateY(-100px); /* Move the header back up out of view */
-}
-
-/* Navigation styling */
-nav {
-    position: fixed;
-    top: 16px;
-    left: 11.3%;
-    right: 11%;
-    width: auto;
-    z-index: 1003; /* Navigation sits below the logo but above the header */
-    display: flex;
-    justify-content: space-between;
-    transition: all 0.5s ease;
-}
-
-/* Left navigation group */
-.nav-left ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.nav-left ul li {
-    margin-left: 2.5px;
-}
-
-/* Right navigation group */
-.nav-right ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
-}
-
-.nav-right ul li {
-    margin-left: 1.5px;
-}
-
-/* Shared styles for the navigation links */
-nav ul li a {
     position: relative;
+    top: -38px;
+    pointer-events: none;
+    animation-fill-mode: forwards; /* Keep final state */
+}
+
+/* Show logo when header-container is scrolled */
+.header-container.scrolled header img.head-logo {
+    animation: openHorizontally 1.125s ease forwards 0.3s; /* Apply the opening effect */
+    transform-origin: center; 
+    pointer-events: auto;
+}
+
+/* Navigation Left and Right Sections */
+.nav-left {
+    margin-top: 20px; 
+    display: flex;
+    padding-left: 160px; /* Adjust this value to bring it closer to the center */
+}
+
+.nav-right {
+    margin-top: 20px; 
+    display: flex;
+    padding-right: 160px; /* Adjust this value to bring it closer to the center */
+}
+
+
+.nav-left ul, .nav-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 3px;
+}
+
+/* Navigation Links */
+.persistent-nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-family: 'Times New Roman', Times, serif;
@@ -180,11 +183,12 @@ nav ul li a {
     display: block;
     font-size: 18px;
     letter-spacing: 1px;
-    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
-/* Pseudo-element for the underline effect */
-nav ul li a::before {
+/* Hover Effect */
+.persistent-nav ul li a::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -196,19 +200,365 @@ nav ul li a::before {
     z-index: 1;
 }
 
-nav ul li a:hover::before {
+.persistent-nav ul li a:hover::before {
     width: 50%;
     left: 25%;
 }
 
-/* Responsive adjustments */
+/* Search Section Styling */
+#search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D2B48C;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#search-bar form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#search-bar .guest-fields {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.submit-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#search-bar button {
+    background-color: transparent;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid #000;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+#search-bar button:hover {
+    color: #8B0000;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#search-section a, #search-section button, #search-section label {
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: inherit;
+}
+
+/* Diagonal Gallery Layout */
+.diagonal-gallery {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+/* Default state with transition for smooth scaling */
+#home-section img,
+.diagonal-item img {
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect to slightly enlarge images */
+#home-section img:hover,
+.diagonal-item img:hover {
+    transform: scale(1.05); /* Increase size slightly */
+}
+
+
+.diagonal-item {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    max-width: 900px;
+}
+
+.diagonal-item.reverse {
+    grid-template-columns: 3fr 2fr;
+    direction: rtl;
+}
+
+.diagonal-item img {
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+}
+
+main h1 {
+    font-size: 48px;
+    font-family: 'Alex Brush', cursive;
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0 10px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+main p {
+    font-size: 18px;
+    font-family: 'Poiret One', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    color: #ffffff;
+    max-width: 90%;
+    padding-left: 5px;
+}
+
+.text-content h2 {
+    font-size: 48px;
+    font-family: 'Alex Brush', cursive;
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.text-content p {
+    font-size: 18px;
+    font-family: 'Poiret One', sans-serif;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Footer Section Styling */
+.footer {
+    background-color: #222; /* Dark background to match the header and general theme */
+    color: #f5f5f5; /* Light text color for contrast */
+    padding: 20px 10px;
+    text-align: center;
+    font-family: 'Poiret One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: #cfcfcf; /* Slightly muted color for a softer look */
+}
+
+.footer a {
+    color: #D2B48C; /* Use a warm tone to match the theme */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #8B6508; /* Darker shade for hover effect */
+}
+
+/* Add a subtle border at the top for separation */
+.footer {
+    border-top: 1px solid #444;
+}
+/* Carousel button styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust based on your layout */
+    margin: auto;
+}
+
+
+
+.carousel-images img {
+    width: 100%;
+    display: none; /* Hide all images initially */
+}
+
+.carousel-images img:first-child {
+    display: block; /* Show only the first image initially */
+}
+
+/* Base style for carousel buttons */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent; /* No background block */
+    color: #ffffffcc; /* Darker arrow color */
+    border: none;
+    font-size: 32px; /* Increase size for bigger arrows */
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+/* Position the previous button on the left and the next button on the right */
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Darken arrow color on hover */
+.carousel-button:hover {
+    color: #8B6508;/* Fully dark black on hover */
+}
+
+#room-results .carousel-images img:hover {
+    transform: none; /* Remove any hover transformation like scale or rotate */
+    filter: none; /* Remove any hover filter like brightness or contrast */
+    transition: none; /* Disable transition on hover */
+}
+
+.text-content ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0;
+    margin: 15px 0; /* Add spacing above and below the list */
+}
+
+.text-content ul li {
+    position: relative;
+    padding-left: 28px; /* Add space for a custom icon */
+    margin-bottom: 10px; /* Add space between items */
+    font-size: 0.95em;
+    color: #D2B48C; /* Warm tone to match theme */
+    line-height: 1.6;
+    font-family: 'Poiret One', sans-serif;
+}
+
+/* Custom icon for each feature */
+.text-content ul li::before {
+    content: "✔"; /* Add a checkmark or any icon of choice */
+    position: absolute;
+    left: 0;
+    color: #8B6508; /* Accent color for the icon */
+    font-size: 1.1em;
+}
+
+/* Smooth hover effect on room features */
+.text-content ul li:hover {
+    color: #8B6508; /* Match the hover color of navigation links */
+    transition: color 0.3s ease;
+}
+
+/* Styling for the booking button */
+.booking-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Poiret One', sans-serif;
+    color: #ffffff;
+    background-color: #8B6508;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for the booking button */
+.booking-button:hover {
+    background-color: #D2B48C;
+    transform: scale(1.05);
+}
+
+/* Contact Form Section Styling */
+#contact-form-section {
+    background-color: #D2B48C;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    color: #333;
+    font-family: 'Poiret One', sans-serif;
+}
+
+.contact-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    font-size: 16px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-family: 'Poiret One', sans-serif;
+    box-sizing: border-box;
+}
+
+.submit-button-container button {
+    background-color: #8B6508;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poiret One', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button-container button:hover {
+    background-color: #D2B48C;
+    transform: scale(1.05);
+}
+
+#contact-form-section p {
+    color: black;
+}
+
+
 @media (max-width: 768px) {
-    nav {
+    .persistent-nav {
         flex-direction: column;
-        align-items: center;
-        top: 0;
-        left: 10%;
-        right: 10%;
+        height: auto;
     }
 
     .nav-left ul, .nav-right ul {
@@ -216,35 +566,11 @@ nav ul li a:hover::before {
         align-items: center;
     }
 
-    .nav-left ul li, .nav-right ul li {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-}
-
-/* Responsive adjustments for the header and logo */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-
-    #home-section img {
-        width: 250px;
+    header {
+        height: 60px;
     }
 
     header img.head-logo {
         width: 250px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    header {
-        height: 60px;
     }
 }

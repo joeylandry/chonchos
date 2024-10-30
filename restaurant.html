@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chonchos Inn - Restaurant</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -15,42 +17,82 @@
         </a>
     </div>
 
-    <!-- Hidden Header (Shows on Scroll) -->
-    <header class="header">
-        <!-- Centered logo -->
-        <a href="index.html">
-            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-        </a>
-    </header>
+    <div class="pattern-container"> 
 
-    <!-- Navigation (always visible at the top-right) -->
-    <nav>
-        <div class="nav-left">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="restaurant.html">Restaurant</a></li>
-            </ul>
+     <!-- Header Container for unified header and nav appearance -->
+     <div class="header-container">
+        <nav class="persistent-nav">
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <header class="header">
+            <a href="index.html" class="logo-link">
+                <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+            </a>
+        </header>
+    </div>
+
+   <!-- Main Content -->
+   <main>
+    <br>
+    <section>
+        <h1>Welcome to Chonchos Restaurant</h1>
+        <p>Dine in luxury at the Chonchos Restaurant</p>
+    </section>
+
+    <br>
+
+    <section class="diagonal-gallery">
+        <!-- Rooms Section -->
+        <div class="diagonal-item">
+                <img src="rest1.webp" alt="Luxurious rooms at Chonchos Inn">
+            <div class="text-content">
+                <h2>Hall of Dining</h2>
+                <p>Our grand Dining Room offers a stunning setting for an unforgettable culinary experience. With soaring ceilings, elegant chandeliers, and tastefully set tables, this expansive space combines luxury with comfort. Guests can savor gourmet dishes crafted from the finest ingredients, complemented by an extensive wine list and impeccable service. Perfect for both intimate dinners and larger gatherings, our Dining Room provides a sophisticated atmosphere that makes every meal a special occasion</p>
+            </div>
         </div>
-        <div class="nav-right">
-            <ul>
-                <li><a href="lounge.html">Lounge</a></li>
-                <li><a href="spa.html">Spa</a></li>
-                <li><a href="gym.html">Gym</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+
+        <!-- Restaurant Section -->
+        <div class="diagonal-item reverse">
+                <img src="rest3.webp" alt="Dining at Chonchos Inn">
+            <div class="text-content">
+                <h2>Top Quality Selections</h2>
+                <p>Indulge in a culinary experience that showcases the finest flavors and seasonal ingredients. Our menu features a variety of gourmet dishes, expertly crafted by our talented chefs, including perfectly seared steaks, fresh seafood, and vibrant vegetarian options. Each plate is a celebration of creativity and quality, designed to tantalize the palate. Enhance your meal with our carefully curated wine selection, ensuring a perfect pairing for every dish. Whether you’re seeking a casual bite or an elegant dining experience, our commitment to excellence will make every meal memorable</p>
+            </div>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <section>
-            <h2>Welcome to Chonchos Inn - Restaurant</h2>
-            <p>Enjoy the best of Restaurant at Chonchos Inn.</p>
-        </section>
+        <!-- Health & Wellness Section -->
+        <div class="diagonal-item">
+                <img src="rest2.webp" alt="Health and wellness facilities at Chonchos Inn">
+            <div class="text-content">
+                <h2>Restaurant Bar</h2>
+                <p>Our Restaurant Bar is a vibrant hub where guests can enjoy a relaxed atmosphere and exceptional libations. Featuring a stylish design and comfortable seating, it’s the perfect spot for casual gatherings or pre-dinner drinks. Our skilled bartenders craft a range of signature cocktails, classic favorites, and refreshing mocktails, all made with premium spirits and fresh ingredients. Pair your drink with a selection of small plates and shareable bites, ideal for socializing. Whether unwinding after a long day or gearing up for a night out, the Restaurant Bar offers a delightful blend of taste and ambiance</p>
+            </div>
+        </div>
+    </section>
+</main>
 
-        <!-- More sections... -->
-    </main>
+   <!-- Footer Section -->
+   <footer class="footer">
+    <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
+    <p><a href="contact.html">Contact Us</a></p>
+</footer>
+
+</div> <!-- End of Pattern Container -->
 
     <!-- <footer class="footer">
         <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>

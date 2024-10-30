@@ -3,60 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chonchos Inn - Rooms</title>
+    <title>Chonchos Inn - Home</title>
     <link rel="stylesheet" href="styles.css">
+    <meta name="keywords" content="hotel, Chonchos Inn, rooms, booking, spa">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Full-screen background section with centered logo -->
-    <div id="home-section" style="background-image: url('rooms.webp');">
+    <div id="home-section" style="background-image: url('rooms.webp'); background-position: -17px center;">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
         </a>
     </div>
 
-    <!-- Hidden Header (Shows on Scroll) -->
-    <header class="header">
-        <!-- Centered logo -->
-        <a href="index.html">
-            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-        </a>
-    </header>
+    <!-- Pattern Container for sections under the main background -->
+    <div class="pattern-container">
 
-    <!-- Navigation (always visible at the top-right) -->
-    <nav>
-        <div class="nav-left">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="restaurant.html">Restaurant</a></li>
-            </ul>
+        <!-- Header Container for unified header and nav appearance -->
+        <div class="header-container">
+            <nav class="persistent-nav">
+                <div class="nav-left">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="restaurant.html">Restaurant</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li><a href="lounge.html">Lounge</a></li>
+                        <li><a href="spa.html">Spa</a></li>
+                        <li><a href="gym.html">Gym</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <header class="header">
+                <a href="index.html" class="logo-link">
+                    <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+                </a>
+            </header>
         </div>
-        <div class="nav-right">
-            <ul>
-                <li><a href="lounge.html">Lounge</a></li>
-                <li><a href="spa.html">Spa</a></li>
-                <li><a href="gym.html">Gym</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+
+        <br>
+
+        <!-- Search Section -->
+        <div id="search-section">
+            <h2>Book</h2>
+            <div id="search-bar">
+                <form action="room_search.html" method="GET">
+                    <!-- Arrival Date -->
+                    <label for="start-date">Arrival</label>
+                    <input type="date" id="start-date" name="start_date" required>
+
+                    <!-- Departure Date -->
+                    <label for="end-date">Departure</label>
+                    <input type="date" id="end-date" name="end_date" required>
+
+                    <!-- Adults and Children on the same line -->
+                    <div class="guest-fields">
+                        <label for="adults">Adults</label>
+                        <button type="button" class="quantity-control" onclick="decrease('adults')">-</button>
+                        <input type="number" id="adults" name="adults" min="1" value="2" required>
+                        <button type="button" class="quantity-control" onclick="increase('adults')">+</button>
+
+                        <label for="children">Children</label>
+                        <button type="button" class="quantity-control" onclick="decrease('children')">-</button>
+                        <input type="number" id="children" name="children" min="0" value="0">
+                        <button type="button" class="quantity-control" onclick="increase('children')">+</button>
+                    </div>
+
+                    <!-- Search Button on a New Line -->
+                    <div class="submit-button-container">
+                        <button type="button" onclick="checkAvailability()">Check Availability</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </nav>
-    <!-- Main Content -->
-    <main>
-        <section>
-            <h2>Welcome to Chonchos Inn - Rooms</h2>
-            <p>Enjoy the best of Rooms at Chonchos Inn.</p>
-        </section>
 
-        <!-- More sections... -->
-    </main>
+        <!-- Main Content -->
+        <main>
+            <section>
+                <h1>Welcome to Chonchos Inn</h1>
+                <p>Enjoy our wonderful home at Chonchos Inn.</p>
+            </section>
 
-    <!-- <footer class="footer">
-        <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-        <p><a href="contact.html">Contact Us</a></p>
-    </footer> -->
+            <br>
+        
+            <section class="diagonal-gallery">
+                <!-- Rooms Section -->
+                <div class="diagonal-item">
+                        <img src="room1.webp" alt="Luxurious rooms at Chonchos Inn">
+                    <div class="text-content">
+                        <h2>Our Rooms</h2>
+                        <p>Experience luxury with every stay at Chonchos Inn.</p>
+                    </div>
+                </div>
+        
+                <!-- Restaurant Section -->
+                <div class="diagonal-item reverse">
+                        <img src="room2.webp" alt="Dining at Chonchos Inn">
+                    <div class="text-content">
+                        <h2>Dining Experience</h2>
+                        <p>Indulge in fine dining at our world-class restaurant.</p>
+                    </div>
+                </div>
+        
+                <!-- Health & Wellness Section -->
+                <div class="diagonal-item">
+                        <img src="room3.webp" alt="Health and wellness facilities at Chonchos Inn">
+                    <div class="text-content">
+                        <h2>Relaxation & Wellness</h2>
+                        <p>Unwind and rejuvenate at our exclusive wellness spa.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-    <!-- Include the JS to handle scrolling behavior -->
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
+            <p><a href="contact.html">Contact Us</a></p>
+        </footer>
+
+    </div> <!-- End of Pattern Container -->
+
+    <!-- JavaScript to handle quantity controls -->
     <script src="script.js"></script>
+    <script>
+        function increase(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.value = parseInt(field.value) + 1;
+            }
+        }
+
+        function decrease(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                const newValue = parseInt(field.value) - 1;
+                if (newValue >= parseInt(field.min)) {
+                    field.value = newValue;
+                }
+            }
+        }
+
+    function checkAvailability() {
+    const adults = parseInt(document.getElementById("adults").value) || 0;
+    const children = parseInt(document.getElementById("children").value) || 0;
+    const totalGuests = adults + children;
+
+    let availableRooms = [];
+    if (totalGuests <= 2) {
+        availableRooms = ["Honeymoon", "Standard", "Deluxe", "Suite"];
+    } else if (totalGuests <= 4) {
+        availableRooms = ["Standard", "Deluxe", "Suite"];
+    } else if (totalGuests <= 6) {
+        availableRooms = ["Deluxe", "Suite"];
+    } else {
+        availableRooms = ["Suite"];
+    }
+
+    const queryParams = new URLSearchParams({
+        rooms: availableRooms.join(","),
+        start_date: document.getElementById("start-date").value,
+        end_date: document.getElementById("end-date").value,
+        adults: adults,
+        children: children,
+    });
+
+    window.location.href = `room_search.html?${queryParams.toString()}`;
+}
+    </script>
+
 </body>
 </html>

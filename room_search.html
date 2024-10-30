@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Search Results - Chonchos Inn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Full-screen background section with centered logo -->
+    <div id="home-section" style="background-image: url('rooms.webp');">
+        <a href="index.html">
+            <img src="logo.png" alt="Logo" class="logo-visible">
+        </a>
+    </div>
+
+    <div class="pattern-container">
+
+        <!-- Header and Navigation Bar -->
+        <div class="header-container">
+            <nav class="persistent-nav">
+                <div class="nav-left">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="restaurant.html">Restaurant</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li><a href="lounge.html">Lounge</a></li>
+                        <li><a href="spa.html">Spa</a></li>
+                        <li><a href="gym.html">Gym</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <header class="header">
+                <a href="index.html" class="logo-link">
+                    <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+                </a>
+            </header>
+        </div>
+
+        <!-- Main Content for Room Results -->
+        <main>
+            <br>
+            <section>
+                <h1>Available Rooms for Your Stay</h1>
+                
+                <!-- Display user-selected details here -->
+                <div id="selected-details" class="selected-details">
+                    <!-- JavaScript will insert the selected dates and guest count here -->
+                </div>
+
+                <div id="room-results" class="diagonal-gallery">
+                    <!-- JavaScript will insert room options with carousels here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
+            <p><a href="contact.html">Contact Us</a></p>
+        </footer>
+    </div> <!-- End of Pattern Container -->
+
+    <!-- JavaScript for populating rooms with image carousels based on guest count -->
+    <script>
+        // Fetch URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const startDate = params.get('start_date');
+        const endDate = params.get('end_date');
+        const adults = parseInt(params.get('adults')) || 0;
+        const children = parseInt(params.get('children')) || 0;
+        const maxGuests = adults + children;
+
+        // Display selected dates and guest count
+        const selectedDetails = document.getElementById("selected-details");
+        selectedDetails.innerHTML = `
+            <p><strong>Dates Selected:</strong> ${startDate} to ${endDate}</p>
+            <p><strong>Guests:</strong> ${adults} Adult(s), ${children} Child(ren)</p>
+        `;
+
+        // Room options with max capacity, carousel images, and features
+        const rooms = [
+            { 
+                name: "Honeymoon Suite", 
+                maxCapacity: 2, 
+                images: ["honey1.webp", "honey2.webp", "honey3.webp", "honey4.webp"], 
+                description: "Perfect for couples looking for an intimate stay.", 
+                features: ["King-size bed", "Private balcony", "Ocean view", "Room service"]
+            },
+            { 
+                name: "Standard Room", 
+                maxCapacity: 4, 
+                images: ["standard1.webp", "standard2.webp", "standard3.webp", "standard4.webp"], 
+                description: "Comfort and style for small families or groups.", 
+                features: ["Two double beds", "City view", "Complimentary breakfast", "Free Wi-Fi"]
+            },
+            { 
+                name: "Deluxe Room", 
+                maxCapacity: 6, 
+                images: ["deluxe1.webp", "deluxe2.webp", "deluxe3.webp", "deluxe4.webp", "deluxe5.webp"], 
+                description: "Spacious and luxurious for larger groups.", 
+                features: ["Two queen beds", "Separate living area", "Mini-bar", "Pool access"]
+            },
+            { 
+                name: "Suite", 
+                maxCapacity: 12, 
+                images: ["suite1.webp", "suite2.webp", "suite3.webp", "suite4.webp", "suite5.webp", "suite6.webp", "suite7.webp", "suite8.webp", "suite9.webp"], 
+                description: "Ultimate luxury and space for the whole family or group.", 
+                features: ["Three king-size beds", "Full kitchen", "Private pool", "Butler service"]
+            }
+        ];
+
+        // Filter rooms by max guest capacity and render to page
+        const availableRooms = rooms.filter(room => maxGuests <= room.maxCapacity);
+        const roomResultsContainer = document.getElementById("room-results");
+
+        availableRooms.forEach((room, index) => {
+            const roomItem = document.createElement("div");
+            roomItem.classList.add("diagonal-item");
+            if (index % 2 === 1) {
+                roomItem.classList.add("reverse"); // Apply reverse layout for every other room
+            }
+
+            // Carousel HTML and description with features list and booking button
+            roomItem.innerHTML = `
+                <div class="carousel">
+                    <div class="carousel-images" data-index="0">
+                        ${room.images.map(image => `<img src="${image}" alt="${room.name} Image" class="carousel-image">`).join('')}
+                    </div>
+                    <button class="carousel-button prev" onclick="showPrevImage(this)">&#10094;</button>
+                    <button class="carousel-button next" onclick="showNextImage(this)">&#10095;</button>
+                </div>
+                <div class="text-content">
+                    <h2>${room.name}</h2>
+                    <p>${room.description}</p>
+                    <ul>
+                        ${room.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <a href="contact.html" class="booking-button">Call Hotel to Book</a>
+                </div>
+            `;
+
+            roomResultsContainer.appendChild(roomItem);
+
+            // Initialize auto-rotation for each carousel
+            autoRotateCarousel(roomItem.querySelector(".carousel-images"));
+        });
+
+        // Carousel control functions with automatic rotation
+        function showPrevImage(button) {
+            const carousel = button.parentElement.querySelector(".carousel-images");
+            updateCarouselIndex(carousel, -1);
+            resetAutoRotate(carousel); // Reset auto-rotate on manual interaction
+        }
+
+        function showNextImage(button) {
+            const carousel = button.parentElement.querySelector(".carousel-images");
+            updateCarouselIndex(carousel, 1);
+            resetAutoRotate(carousel); // Reset auto-rotate on manual interaction
+        }
+
+        // Update image display based on index adjustment
+        function updateCarouselIndex(carousel, change) {
+            const index = parseInt(carousel.getAttribute("data-index"));
+            const images = carousel.querySelectorAll(".carousel-image");
+            const newIndex = (index + change + images.length) % images.length;
+            images.forEach((img, idx) => img.style.display = idx === newIndex ? "block" : "none");
+            carousel.setAttribute("data-index", newIndex);
+        }
+
+        // Automatic image rotation every 3 seconds
+        function autoRotateCarousel(carousel) {
+            carousel.autoRotate = setInterval(() => {
+                updateCarouselIndex(carousel, 1);
+            }, 3000);
+        }
+
+        // Reset the auto-rotate timer when a button is clicked
+        function resetAutoRotate(carousel) {
+            clearInterval(carousel.autoRotate);
+            autoRotateCarousel(carousel); // Restart auto-rotation
+        }
+
+        // Smooth scroll to main section on page load
+        window.onload = () => {
+            const mainSection = document.querySelector("main");
+            const targetPosition = mainSection.getBoundingClientRect().top + window.pageYOffset - 50; // Adjust offset as needed
+            const duration = 2000; // Duration of the scroll in milliseconds
+
+            slowScrollTo(targetPosition, duration);
+
+            // Initialize carousel display to show only the first image in each
+            document.querySelectorAll(".carousel-images").forEach(carousel => {
+                const images = carousel.querySelectorAll(".carousel-image");
+                images.forEach((img, idx) => img.style.display = idx === 0 ? "block" : "none");
+            });
+        };
+
+        // Smooth scroll function
+        function slowScrollTo(targetPosition, duration) {
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animationScroll(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+
+                if (timeElapsed < duration) requestAnimationFrame(animationScroll);
+            }
+
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animationScroll);
+        }
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>

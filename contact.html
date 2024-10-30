@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chonchos Inn - Contact</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -15,47 +17,117 @@
         </a>
     </div>
 
-    <!-- Hidden Header (Shows on Scroll) -->
-    <header class="header">
-        <!-- Centered logo -->
-        <a href="index.html">
-            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-        </a>
-    </header>
+    <div class="pattern-container"> 
 
-    <!-- Navigation (always visible at the top-right) -->
-    <nav>
-        <div class="nav-left">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="restaurant.html">Restaurant</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li><a href="lounge.html">Lounge</a></li>
-                <li><a href="spa.html">Spa</a></li>
-                <li><a href="gym.html">Gym</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+      <!-- Header Container for unified header and nav appearance -->
+      <div class="header-container">
+        <nav class="persistent-nav">
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <header class="header">
+            <a href="index.html" class="logo-link">
+                <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+            </a>
+        </header>
+    </div>
 
     <!-- Main Content -->
-    <main>
-        <section>
-            <h2>Welcome to Chonchos Inn - Contact</h2>
-            <p>Enjoy the best of Contact at Chonchos Inn.</p>
-        </section>
+   <main>
+    <br>
 
-        <!-- More sections... -->
-    </main>
+    <section>
+        <h1>Welcome to Chonchos Inn</h1>
+        <p>Enjoy our wonderful home at Chonchos Inn.</p>
+    </section>
 
-    <!-- <footer class="footer">
-        <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-        <p><a href="contact.html">Contact Us</a></p>
-    </footer> -->
+    <section id="contact-form-section">
+        <h2>Contact Us</h2>
+        <p>We’d love to hear from you. Please fill out the form below and we’ll get back to you as soon as possible or call us at 1-800-Choncho.</p>
+        
+        <form action="contact_form_submission.html" method="POST" class="contact-form">
+            <!-- Name Input -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <!-- Email Input -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <!-- Reason for Contact Dropdown -->
+            <label for="reason">Reason for Contact:</label>
+            <select id="reason" name="reason" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="booking">Booking Inquiry</option>
+                <option value="general">General Question</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+            </select>
+    
+            <!-- Message Textarea -->
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+    
+            <!-- Submit Button -->
+            <div class="submit-button-container">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </section>
+
+    <br>
+
+    <section class="diagonal-gallery">
+        <!-- Rooms Section -->
+        <div class="diagonal-item">
+                <img src="contact1.webp" alt="Luxurious rooms at Chonchos Inn">
+            <div class="text-content">
+                <h2>Our Rooms</h2>
+                <p>Experience luxury with every stay at Chonchos Inn.</p>
+            </div>
+        </div>
+
+        <!-- Restaurant Section -->
+        <div class="diagonal-item reverse">
+                <img src="contact2.webp" alt="Dining at Chonchos Inn">
+            <div class="text-content">
+                <h2>Dining Experience</h2>
+                <p>Indulge in fine dining at our world-class restaurant.</p>
+            </div>
+        </div>
+
+        <!-- Health & Wellness Section -->
+        <div class="diagonal-item">
+                <img src="contact3.webp" alt="Health and wellness facilities at Chonchos Inn">
+            <div class="text-content">
+                <h2>Relaxation & Wellness</h2>
+                <p>Unwind and rejuvenate at our exclusive wellness spa.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+    <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
+    <p><a href="contact.html">Contact Us</a></p>
+</footer>
+
+</div> <!-- End of Pattern Container -->
 
     <!-- Include the JS to handle scrolling behavior -->
     <script src="script.js"></script>

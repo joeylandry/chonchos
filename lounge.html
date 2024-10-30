@@ -5,57 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chonchos Inn - Lounge</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <style>
+        /* Internal style for the lounge page */
+        #home-section {
+            position: relative;
+            height: 100vh;
+            background: url('lounge.webp') no-repeat center;
+            background-position: -25px center; /* Adjusted background position */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Black overlay on the left side */
+        #home-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1%; /* Adjust this value as needed */
+            height: 100%;
+            background-color: black;
+            z-index: 1; /* Ensures it overlays the background image */
+        }
+    </style>
 </head>
 <body>
 
     <!-- Full-screen background section with centered logo -->
-    <div id="home-section" style="background-image: url('lounge.webp');">
+    <div id="home-section">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
         </a>
     </div>
 
-    <!-- Hidden Header (Shows on Scroll) -->
-    <header class="header">
-        <!-- Centered logo -->
-        <a href="index.html">
-            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-        </a>
-    </header>
+    <div class="pattern-container"> 
 
-    <!-- Navigation (always visible at the top-right) -->
-    <nav>
-        <div class="nav-left">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="restaurant.html">Restaurant</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li><a href="lounge.html">Lounge</a></li>
-                <li><a href="spa.html">Spa</a></li>
-                <li><a href="gym.html">Gym</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
+    <!-- Header Container for unified header and nav appearance -->
+    <div class="header-container">
+        <nav class="persistent-nav">
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <header class="header">
+            <a href="index.html" class="logo-link">
+                <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+            </a>
+        </header>
+    </div>
+    
     <!-- Main Content -->
     <main>
+        <br>
         <section>
-            <h2>Welcome to Chonchos Inn - Lounge</h2>
-            <p>Enjoy the best of Lounge at Chonchos Inn.</p>
+            <h1>Welcome to Chonchos Lounge </h1>
+            <p>Relax in luxury at Chonchos Lounge</p>
         </section>
 
-        <!-- More sections... -->
+        <br>
+    
+        <section class="diagonal-gallery">
+            <!-- Rooms Section -->
+            <div class="diagonal-item">
+                    <img src="lounge1.webp" alt="Luxurious rooms at Chonchos Inn">
+                <div class="text-content">
+                    <h2>The Great Room</h2>
+                    <p>Our luxurious Great Room invites guests to unwind and socialize in an ambiance of refined elegance. With plush seating, ambient lighting, and sophisticated décor, this distinguished space offers the perfect blend of comfort and style. Whether enjoying a crafted cocktail, mingling by the grand fireplace, or relaxing with a book, guests can savor a serene atmosphere ideal for both connection and relaxation.</p>
+                </div>
+            </div>
+    
+            <!-- Restaurant Section -->
+            <div class="diagonal-item reverse">
+                    <img src="lounge2.webp" alt="Dining at Chonchos Inn">
+                <div class="text-content">
+                    <h2>Spirits Lounge</h2>
+                    <p>Our hotel bar offers an exquisite setting for guests to indulge in expertly crafted cocktails and fine spirits. With sleek, sophisticated decor, the bar provides a warm, inviting atmosphere perfect for unwinding after a day of exploration or business. Enjoy signature drinks prepared by our skilled mixologists, an extensive wine selection, and curated small plates, all set against a backdrop of ambient lighting and elegant design. Whether for an evening social gathering or a quiet nightcap, our bar is the ideal retreat for refined relaxation</p>
+                </div>
+            </div>
+    
+            <!-- Health & Wellness Section -->
+            <div class="diagonal-item">
+                    <img src="lounge3.webp" alt="Health and wellness facilities at Chonchos Inn">
+                <div class="text-content">
+                    <h2>Our Cigar Room</h2>
+                    <p>Our exclusive Cigar Room offers a refined retreat for those who appreciate the art of fine cigars. With rich leather seating, dark wood accents, and an advanced ventilation system, this space is designed for comfort and sophistication. Guests can select from a curated collection of premium cigars and enjoy pairings from an extensive list of whiskeys and cognacs. Whether for quiet reflection or conversation, the Cigar Room provides a luxurious, intimate atmosphere ideal for relaxation and enjoyment.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- <footer class="footer">
+    <!-- Footer Section -->
+    <footer class="footer">
         <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
         <p><a href="contact.html">Contact Us</a></p>
-    </footer> -->
+    </footer>
+
+</div> <!-- End of Pattern Container -->
 
     <!-- Include the JS to handle scrolling behavior -->
     <script src="script.js"></script>

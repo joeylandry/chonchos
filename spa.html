@@ -5,57 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chonchos Inn - Spa</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Full-screen background section with centered logo -->
-    <div id="home-section" style="background-image: url('spa.webp');">
+    <div id="home-section" style="background-image: url('spa.webp'); background-position: 2.5px center;">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
         </a>
     </div>
 
-    <!-- Hidden Header (Shows on Scroll) -->
-    <header class="header">
-        <!-- Centered logo -->
-        <a href="index.html">
-            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-        </a>
-    </header>
+    <div class="pattern-container"> 
 
-    <!-- Navigation (always visible at the top-right) -->
-    <nav>
-        <div class="nav-left">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="restaurant.html">Restaurant</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li><a href="lounge.html">Lounge</a></li>
-                <li><a href="spa.html">Spa</a></li>
-                <li><a href="gym.html">Gym</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
+     <!-- Header Container for unified header and nav appearance -->
+     <div class="header-container">
+        <nav class="persistent-nav">
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <header class="header">
+            <a href="index.html" class="logo-link">
+                <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+            </a>
+        </header>
+    </div>
     <!-- Main Content -->
-    <main>
-        <section>
-            <h2>Welcome to Chonchos Inn - Spa</h2>
-            <p>Enjoy the best of Spa at Chonchos Inn.</p>
-        </section>
+   <main>
+    <br>
+    <section>
+        <h1>Welcome to Chonchos Spa</h1>
+        <p>Experience the pinnacle of relaxation at Chonchos Spa</p>
+    </section>
 
-        <!-- More sections... -->
-    </main>
+    <br>
 
-    <!-- <footer class="footer">
-        <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-        <p><a href="contact.html">Contact Us</a></p>
-    </footer> -->
+    <section class="diagonal-gallery">
+        <!-- Rooms Section -->
+        <div class="diagonal-item">
+                <img src="spa2.webp" alt="Luxurious rooms at Chonchos Inn">
+            <div class="text-content">
+                <h2>Massage Rooms</h2>
+                <p>Discover tranquility at our luxurious Massage Spa, where relaxation and rejuvenation take center stage. Our skilled therapists offer a range of treatments, from soothing Swedish massages to invigorating deep tissue therapies, tailored to meet each guest's unique needs. The serene ambiance, complemented by calming music and aromatic scents, creates the perfect escape from the everyday hustle. Indulge in personalized spa packages that include body scrubs and facials for a comprehensive wellness experience. At our Massage Spa, every visit is a journey towards harmony, making it the ultimate destination for relaxation and self-care.</p>
+            </div>
+        </div>
+
+        <!-- Restaurant Section -->
+        <div class="diagonal-item reverse">
+                <img src="spa3.webp" alt="Dining at Chonchos Inn">
+            <div class="text-content">
+                <h2>Retreat Room</h2>
+                <p>Step into our luxurious Spa Room, where relaxation meets indulgence with state-of-the-art water tub jacuzzis. Designed for ultimate comfort, this serene space features spacious tubs equipped with soothing jets to melt away stress and tension. Guests can enjoy a tranquil ambiance enhanced by soft lighting and calming scents, making it the perfect setting for unwinding after a long day. With options for hydrotherapy treatments and aromatherapy infusions, our Spa Room offers a rejuvenating experience that promotes both physical and mental well-being. Treat yourself to a moment of bliss in this private oasis of relaxation.</p>
+            </div>
+        </div>
+
+        <!-- Health & Wellness Section -->
+        <div class="diagonal-item">
+                <img src="spa4.webp" alt="Health and wellness facilities at Chonchos Inn">
+            <div class="text-content">
+                <h2>Meditation Room </h2>
+                <p>Our Meditation Room is a tranquil sanctuary designed to foster mindfulness and inner peace. Soft lighting, calming colors, and comfortable seating create an inviting atmosphere ideal for relaxation and reflection. Guests can participate in guided meditation sessions or enjoy quiet solitude, surrounded by soothing sounds and gentle aromas. Whether you're seeking a moment of stillness or a deeper connection to your inner self, our Meditation Room offers the perfect escape from the hustle and bustle, allowing you to recharge and find balance in a serene environment.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+    <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
+    <p><a href="contact.html">Contact Us</a></p>
+</footer>
+
+</div> <!-- End of Pattern Container -->
 
     <!-- Include the JS to handle scrolling behavior -->
     <script src="script.js"></script>

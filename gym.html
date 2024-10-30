@@ -5,57 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chonchos Inn - Gym</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Full-screen background section with centered logo -->
-    <div id="home-section" style="background-image: url('gym.webp');">
+    <div id="home-section" style="background-image: url('gym.webp'); background-position: -3px center;">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
         </a>
     </div>
 
-    <!-- Hidden Header (Shows on Scroll) -->
-    <header class="header">
-        <!-- Centered logo -->
-        <a href="index.html">
-            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-        </a>
-    </header>
+    <div class="pattern-container"> 
 
-    <!-- Navigation (always visible at the top-right) -->
-    <nav>
-        <div class="nav-left">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="restaurant.html">Restaurant</a></li>
-            </ul>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li><a href="lounge.html">Lounge</a></li>
-                <li><a href="spa.html">Spa</a></li>
-                <li><a href="gym.html">Gym</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+     <!-- Header Container for unified header and nav appearance -->
+     <div class="header-container">
+        <nav class="persistent-nav">
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <header class="header">
+            <a href="index.html" class="logo-link">
+                <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+            </a>
+        </header>
+    </div>
 
     <!-- Main Content -->
-    <main>
-        <section>
-            <h2>Welcome to Chonchos Inn - Gym</h2>
-            <p>Enjoy the best of Gym at Chonchos Inn.</p>
-        </section>
+   <main>
+    <br>
+    <section>
+        <h1>Welcome to Chonchos Gym</h1>
+        <p>Get the pump of your life at Chonchos Gym</p>
+    </section>
 
-        <!-- More sections... -->
-    </main>
+    <br>
 
-    <!-- <footer class="footer">
-        <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-        <p><a href="contact.html">Contact Us</a></p>
-    </footer> -->
+    <section class="diagonal-gallery">
+        <!-- Rooms Section -->
+        <div class="diagonal-item">
+                <img src="gym1.webp" alt="Luxurious rooms at Chonchos Inn">
+            <div class="text-content">
+                <h2>Our Facilities</h2>
+                <p> Experience wellness redefined at our state-of-the-art gym facility, designed exclusively for our luxury hotel guests. This wellness haven features cutting-edge equipment from leading brands, including Peloton bikes, high-tech treadmills, and free weights, catering to all fitness levels. Our spacious layout offers dedicated zones for cardio, strength training, yoga, and functional workouts, ensuring an inspiring environment for every fitness routine. Guests enjoy complimentary access to our on-demand virtual classes and personalized training sessions with certified trainers. Complete with a recovery lounge, hydro-massage chairs, and serene relaxation spaces, our gym is where luxury meets peak performance.</p>
+            </div>
+        </div>
+
+        <!-- Restaurant Section -->
+        <div class="diagonal-item reverse">
+                <img src="gym2.webp" alt="Dining at Chonchos Inn">
+            <div class="text-content">
+                <h2>Athletic Accomodations</h2>
+                <p>Our luxury hotel’s premier indoor turf facility is designed for athletes seeking high-performance training. Featuring top-grade turf for durability and impact absorption, it supports agility drills, speed work, and functional training. Expert trainers provide personalized programs, bringing professional-level fitness within reach in a refined, exclusive setting.</p>
+            </div>
+        </div>
+
+        <!-- Health & Wellness Section -->
+        <div class="diagonal-item">
+                <img src="gym3.webp" alt="Health and wellness facilities at Chonchos Inn">
+            <div class="text-content">
+                <h2>Relaxation & Recovery</h2>
+                <p>Unwind and rejuvenate in our luxury hotel’s exclusive relaxation and recovery room. This serene space includes a Finnish sauna, steam room, and Himalayan salt lounge, offering the perfect atmosphere for post-workout recovery or pure relaxation. Guests can also enjoy hydrotherapy massage chairs and a tranquil meditation area, designed to promote ultimate wellness and renewal in an indulgent, calming setting.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+   <!-- Footer Section -->
+   <footer class="footer">
+    <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
+    <p><a href="contact.html">Contact Us</a></p>
+</footer>
+
+</div> <!-- End of Pattern Container -->
 
     <!-- Include the JS to handle scrolling behavior -->
     <script src="script.js"></script>
