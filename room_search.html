@@ -21,6 +21,12 @@
 
         <!-- Header and Navigation Bar -->
         <div class="header-container">
+            <!-- Mobile Menu Button (visible on mobile screens) -->
+            <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+                &#9776; <!-- Hamburger icon -->
+            </div>
+        
+            <!-- Persistent navigation for larger screens -->
             <nav class="persistent-nav">
                 <div class="nav-left">
                     <ul>
@@ -38,7 +44,21 @@
                     </ul>
                 </div>
             </nav>
-
+            
+            <!-- Mobile Menu (hidden by default, shown when toggled) -->
+            <nav class="mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        
+            <!-- Logo section -->
             <header class="header">
                 <a href="index.html" class="logo-link">
                     <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
@@ -94,28 +114,28 @@
                 maxCapacity: 2, 
                 images: ["honey1.webp", "honey2.webp", "honey3.webp", "honey4.webp"], 
                 description: "Perfect for couples looking for an intimate stay.", 
-                features: ["King-size bed", "Private balcony", "Ocean view", "Room service"]
+                features: ["King-size bed", "Private balcony", "Ocean view", "Scented candles"]
             },
             { 
                 name: "Standard Room", 
                 maxCapacity: 4, 
                 images: ["standard1.webp", "standard2.webp", "standard3.webp", "standard4.webp"], 
                 description: "Comfort and style for small families or groups.", 
-                features: ["Two double beds", "City view", "Complimentary breakfast", "Free Wi-Fi"]
+                features: ["Two queen beds", "Ocean view", "Large shower", "Homey feel", "Sitting area", "Private balcony"]
             },
             { 
                 name: "Deluxe Room", 
                 maxCapacity: 6, 
                 images: ["deluxe1.webp", "deluxe2.webp", "deluxe3.webp", "deluxe4.webp", "deluxe5.webp"], 
                 description: "Spacious and luxurious for larger groups.", 
-                features: ["Two queen beds", "Separate living area", "Mini-bar", "Pool access"]
+                features: ["King bed", "Two queen beds", "Luxurious living area", "Private terrace", "Spacious bathroom"]
             },
             { 
                 name: "Suite", 
                 maxCapacity: 12, 
                 images: ["suite1.webp", "suite2.webp", "suite3.webp", "suite4.webp", "suite5.webp", "suite6.webp", "suite7.webp", "suite8.webp", "suite9.webp"], 
                 description: "Ultimate luxury and space for the whole family or group.", 
-                features: ["Three king-size beds", "Full kitchen", "Private pool", "Butler service"]
+                features: ["Three king-size beds", "Two queen-size beds", "Full kitchen", "Vaulted great room", "Butler service", "Multiple bathrooms"]
             }
         ];
 

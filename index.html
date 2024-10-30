@@ -21,32 +21,52 @@
     <!-- Pattern Container for sections under the main background -->
     <div class="pattern-container">
 
-        <!-- Header Container for unified header and nav appearance -->
-        <div class="header-container">
-            <nav class="persistent-nav">
-                <div class="nav-left">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="rooms.html">Rooms</a></li>
-                        <li><a href="restaurant.html">Restaurant</a></li>
-                    </ul>
-                </div>
-                <div class="nav-right">
-                    <ul>
-                        <li><a href="lounge.html">Lounge</a></li>
-                        <li><a href="spa.html">Spa</a></li>
-                        <li><a href="gym.html">Gym</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-            
-            <header class="header">
-                <a href="index.html" class="logo-link">
-                    <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
-                </a>
-            </header>
+      <!-- Header Container for unified header and nav appearance -->
+<div class="header-container">
+    <!-- Mobile Menu Button (visible on mobile screens) -->
+    <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+        &#9776; <!-- Hamburger icon -->
+    </div>
+
+    <!-- Persistent navigation for larger screens -->
+    <nav class="persistent-nav">
+        <div class="nav-left">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="restaurant.html">Restaurant</a></li>
+            </ul>
         </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="lounge.html">Lounge</a></li>
+                <li><a href="spa.html">Spa</a></li>
+                <li><a href="gym.html">Gym</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu (hidden by default, shown when toggled) -->
+    <nav class="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="restaurant.html">Restaurant</a></li>
+            <li><a href="lounge.html">Lounge</a></li>
+            <li><a href="spa.html">Spa</a></li>
+            <li><a href="gym.html">Gym</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Logo section -->
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
+        </a>
+    </header>
+</div>
 
         <br>
 

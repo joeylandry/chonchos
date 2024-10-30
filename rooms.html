@@ -21,8 +21,13 @@
     <!-- Pattern Container for sections under the main background -->
     <div class="pattern-container">
 
-        <!-- Header Container for unified header and nav appearance -->
         <div class="header-container">
+            <!-- Mobile Menu Button (visible on mobile screens) -->
+            <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+                &#9776; <!-- Hamburger icon -->
+            </div>
+        
+            <!-- Persistent navigation for larger screens -->
             <nav class="persistent-nav">
                 <div class="nav-left">
                     <ul>
@@ -41,6 +46,20 @@
                 </div>
             </nav>
             
+            <!-- Mobile Menu (hidden by default, shown when toggled) -->
+            <nav class="mobile-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="restaurant.html">Restaurant</a></li>
+                    <li><a href="lounge.html">Lounge</a></li>
+                    <li><a href="spa.html">Spa</a></li>
+                    <li><a href="gym.html">Gym</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        
+            <!-- Logo section -->
             <header class="header">
                 <a href="index.html" class="logo-link">
                     <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
@@ -99,7 +118,7 @@
                         <img src="room1.webp" alt="Luxurious rooms at Chonchos Inn">
                     <div class="text-content">
                         <h2>Our Rooms</h2>
-                        <p>Experience luxury with every stay at Chonchos Inn.</p>
+                        <p>Our comfortable hotel rooms are thoughtfully designed to provide a relaxing retreat for every guest. Featuring plush bedding, elegant decor, and modern amenities, each room creates a warm and inviting atmosphere. Large windows offer stunning views, while soundproof walls ensure a peaceful night’s sleep. Guests can enjoy conveniences like complimentary Wi-Fi, spacious workstations, and well-appointed en-suite bathrooms. Whether you’re here for business or leisure, our rooms provide the perfect blend of comfort and luxury, making your stay truly enjoyable and restful</p>
                     </div>
                 </div>
         
@@ -107,8 +126,8 @@
                 <div class="diagonal-item reverse">
                         <img src="room2.webp" alt="Dining at Chonchos Inn">
                     <div class="text-content">
-                        <h2>Dining Experience</h2>
-                        <p>Indulge in fine dining at our world-class restaurant.</p>
+                        <h2>Bathroom Amenities</h2>
+                        <p>Indulge in a luxurious bathing experience with our exquisite bathroom amenities, designed to elevate your stay. Each bathroom is stocked with high-quality, eco-friendly toiletries, including refreshing shampoos, nourishing conditioners, and hydrating body washes. Soft, plush towels and premium bathrobes add an extra touch of comfort, while invigorating bath salts and soothing lotions provide a spa-like experience. Enjoy the convenience of stylish vanity mirrors and high-end fixtures that combine functionality with elegance. Every detail is carefully curated to ensure your comfort and relaxation, making our bathroom amenities a true highlight of your stay</p>
                     </div>
                 </div>
         
@@ -116,8 +135,8 @@
                 <div class="diagonal-item">
                         <img src="room3.webp" alt="Health and wellness facilities at Chonchos Inn">
                     <div class="text-content">
-                        <h2>Relaxation & Wellness</h2>
-                        <p>Unwind and rejuvenate at our exclusive wellness spa.</p>
+                        <h2>Breathtaking Views</h2>
+                        <p>Our hotel features private balconies with breathtaking oceanfront views, offering a perfect setting for relaxation and tranquility. Step outside to enjoy the gentle sea breeze and the sound of waves crashing against the shore, creating an idyllic atmosphere for morning coffee or evening cocktails. Each balcony is elegantly furnished, providing a cozy space to unwind while soaking in stunning sunsets and panoramic vistas. Whether you're savoring a quiet moment or entertaining friends, these balconies are a luxurious extension of your room, inviting you to immerse yourself in the beauty of the ocean</p>
                     </div>
                 </div>
             </section>

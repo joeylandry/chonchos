@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const headLogo = document.querySelector('.head-logo'); // Head logo
     const headerContainer = document.querySelector('.header-container'); // Header container element
     const logoLink = document.querySelector('header a'); // Select anchor without needing a class
+    const menuIcon = document.querySelector('.mobile-menu-button'); // Mobile menu icon
+    const mobileMenu = document.querySelector('.mobile-menu'); // Mobile menu container
+
+    // Function to toggle mobile menu visibility
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle('open'); // Toggle the 'open' class
+    }
 
     // Trigger fade-in animation on the main logo when the page loads
     if (logo) {
@@ -41,4 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Toggle mobile menu visibility on icon click
+    if (menuIcon && mobileMenu) {
+        menuIcon.addEventListener('click', toggleMobileMenu); // Use toggleMobileMenu function
+    }
+
+    // Close the mobile menu when a menu item is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('open'); // Hide the menu
+        });
+    });
 });

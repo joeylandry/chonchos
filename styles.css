@@ -140,7 +140,7 @@ header img.head-logo {
     height: auto;
     filter: invert(100%);
     position: relative;
-    top: -38px;
+    top: -57px;
     pointer-events: none;
     animation-fill-mode: forwards; /* Keep final state */
 }
@@ -154,13 +154,13 @@ header img.head-logo {
 
 /* Navigation Left and Right Sections */
 .nav-left {
-    margin-top: 20px; 
+    margin-top: -15px; 
     display: flex;
     padding-left: 160px; /* Adjust this value to bring it closer to the center */
 }
 
 .nav-right {
-    margin-top: 20px; 
+    margin-top: -15px; 
     display: flex;
     padding-right: 160px; /* Adjust this value to bring it closer to the center */
 }
@@ -554,23 +554,111 @@ main p {
     color: black;
 }
 
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    z-index: 1000;
+    padding-top: 80px; /* Space for the header */
+    text-align: center;
+}
 
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu ul li {
+    margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+
+/* Hide the main background image section on mobile */
 @media (max-width: 768px) {
-    .persistent-nav {
-        flex-direction: column;
-        height: auto;
+    #home-section {
+        display: none !important; /* Hide the background section on mobile */
+    }
+    
+    /* Optional: Adjust main content padding to ensure content appears at the top */
+    .pattern-container {
+        padding-top: 20px; /* Add padding if needed */
     }
 
-    .nav-left ul, .nav-right ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header {
-        height: 60px;
+    .header-container {
+        position: fixed; /* Fix the header to the top */
+        top: 0;
+        width: 100%;
+        background-color: #000000; /* Ensure a visible background */
+        z-index: 100;
+        height: 75px; /* Adjust height as needed */
     }
 
     header img.head-logo {
-        width: 250px;
+        animation: none; /* Disable any animations */
+        opacity: 1; /* Ensure the logo is always visible */
+        transform: none; /* Reset any transformations */
+        pointer-events: auto; /* Ensure it’s clickable */
+        margin-top: 130px;
+    }
+
+    .pattern-container, main, #search-section {
+        padding-top: 75px; /* Add space equal to the header's height */
+    }
+    #search-section {
+        padding: 10px; /* Reduce padding */
+        width: 100%; /* Full width on mobile */
+    }
+
+    #search-bar form {
+        flex-direction: column; /* Stack items vertically */
+        align-items: stretch; /* Expand items to fit width */
+    }
+
+    .guest-fields {
+        flex-direction: column; /* Stack Adults and Children fields */
+        gap: 5px; /* Reduce spacing */
+    }
+
+    .guest-fields label {
+        margin-bottom: 5px;
+        font-size: 14px; /* Adjust label font size for mobile */
+    }
+
+    #search-bar input[type="number"] {
+        width: 100%; /* Full width for number inputs */
+    }
+
+    .submit-button-container {
+        margin-top: 10px; /* Adjust spacing for better fit */
+    }
+
+    .mobile-menu-button {
+        display: block;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+    }
+
+    .mobile-menu.open {
+        display: block; /* Display the menu when open */
+    }
+
+    .persistent-nav, .nav-left, .nav-right {
+        display: none; /* Hide desktop navigation */
     }
 }
