@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to toggle mobile menu visibility
     function toggleMobileMenu() {
-        mobileMenu.classList.toggle('open'); // Toggle the 'open' class
+        mobileMenu.classList.toggle('open'); 
     }
 
     // Trigger fade-in animation on the main logo when the page loads
@@ -18,22 +18,22 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             logo.classList.remove('logo-fade-in');
             logo.classList.add('logo-visible');
-        }, 1000); // 1s animation duration
+        }, 1000); 
     }
 
-    // Apply scroll-based logic to header-container for unified header effect and main logo fade-out
+    // Apply scroll-based logic to header-container
     if (headerContainer && headLogo) {
         let headerVisible = false;
 
         // Scroll event to control header-container, head-logo visibility, and main logo fade-out
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50 && !headerVisible) {
-                headerContainer.classList.add('scrolled'); // Make header-container visible
+                headerContainer.classList.add('scrolled'); 
                 headLogo.classList.add('logo-visible');
                 logo.classList.add('logo-hidden'); // Fade out main logo
                 headerVisible = true;
             } else if (window.scrollY <= 50 && headerVisible) {
-                headerContainer.classList.remove('scrolled'); // Hide header-container at top
+                headerContainer.classList.remove('scrolled');
                 headLogo.classList.remove('logo-visible');
                 logo.classList.remove('logo-hidden'); // Fade in main logo
                 headerVisible = false;
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Toggle mobile menu visibility on icon click
     if (menuIcon && mobileMenu) {
-        menuIcon.addEventListener('click', toggleMobileMenu); // Use toggleMobileMenu function
+        menuIcon.addEventListener('click', toggleMobileMenu);
     }
 
     // Close the mobile menu when a menu item is clicked

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- Full-screen background section with centered logo -->
+    <!-- Logo formatting -->
     <div id="home-section" style="background-image: url('contact.webp');">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
@@ -19,14 +19,12 @@
 
     <div class="pattern-container"> 
 
-      <!-- Header Container for unified header and nav appearance -->
       <div class="header-container">
-        <!-- Mobile Menu Button (visible on mobile screens) -->
+        <!-- Mobile menu button -->
         <div class="mobile-menu-button" onclick="toggleMobileMenu()">
-            &#9776; <!-- Hamburger icon -->
+            &#9776;
         </div>
     
-        <!-- Persistent navigation for larger screens -->
         <nav class="persistent-nav">
             <div class="nav-left">
                 <ul>
@@ -45,7 +43,7 @@
             </div>
         </nav>
         
-        <!-- Mobile Menu (hidden by default, shown when toggled) -->
+        <!-- Mobile menu -->
         <nav class="mobile-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -58,7 +56,6 @@
             </ul>
         </nav>
     
-        <!-- Logo section -->
         <header class="header">
             <a href="index.html" class="logo-link">
                 <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
@@ -66,7 +63,6 @@
         </header>
     </div>
 
-    <!-- Main Content -->
    <main>
     <br>
 
@@ -80,15 +76,15 @@
         <p>We’d love to hear from you. Please fill out the form below and we’ll get back to you as soon as possible or call us at 1-800-Choncho.</p>
         
         <form action="contact_form_submission.html" method="POST" class="contact-form">
-            <!-- Name Input -->
+            <!-- Name input -->
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
     
-            <!-- Email Input -->
+            <!-- Email input -->
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
     
-            <!-- Reason for Contact Dropdown -->
+            <!-- Reason for contact -->
             <label for="reason">Reason for Contact:</label>
             <select id="reason" name="reason" required>
                 <option value="" disabled selected>Select an option</option>
@@ -98,11 +94,11 @@
                 <option value="other">Other</option>
             </select>
     
-            <!-- Message Textarea -->
+            <!-- Message text area -->
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" required></textarea>
     
-            <!-- Submit Button -->
+            <!-- Submit button -->
             <div class="submit-button-container">
                 <button type="submit" class="submit-button">Submit</button>
             </div>
@@ -112,7 +108,6 @@
     <br>
 
     <section class="diagonal-gallery">
-        <!-- Rooms Section -->
         <div class="diagonal-item">
                 <img src="contact1.webp" alt="Luxurious rooms at Chonchos Inn">
             <div class="text-content">
@@ -121,7 +116,6 @@
             </div>
         </div>
 
-        <!-- Restaurant Section -->
         <div class="diagonal-item reverse">
                 <img src="contact2.webp" alt="Dining at Chonchos Inn">
             <div class="text-content">
@@ -130,7 +124,6 @@
             </div>
         </div>
 
-        <!-- Health & Wellness Section -->
         <div class="diagonal-item">
                 <img src="contact3.webp" alt="Health and wellness facilities at Chonchos Inn">
             <div class="text-content">
@@ -141,15 +134,50 @@
     </section>
 </main>
 
-   <!-- Footer Section -->
-   <footer class="footer">
-    <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-    <p><a href="contact.html">Contact Us</a></p>
-</footer>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>Chonchos Inn | 1-800-Choncho | 50 Sunset Ave, Nantucket MA</p>
+        <p><a href="contact.html?scrollToForm=true">Contact Us</a></p>
+    </footer>
 
-</div> <!-- End of Pattern Container -->
+</div> 
+<script>
+    // Check URL parameter to scroll to the contact form section only if navigated with a specific parameter
+    window.onload = () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('scrollToForm') === 'true') {
+            const contactFormSection = document.getElementById("contact-form-section");
+            const targetPosition = contactFormSection.getBoundingClientRect().top + window.pageYOffset - 220;
+            const duration = 2000; // Smooth scroll duration
+            smoothScrollTo(targetPosition, duration);
+        }
+    };
 
-    <!-- Include the JS to handle scrolling behavior -->
+    function smoothScrollTo(targetPosition, duration) {
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        function animationScroll(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+
+            if (timeElapsed < duration) requestAnimationFrame(animationScroll);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animationScroll);
+    }
+</script>
+    <!-- Handle scrolling behavior -->
     <script src="script.js"></script>
 </body>
 </html>

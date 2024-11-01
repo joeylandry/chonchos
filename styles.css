@@ -1,5 +1,5 @@
 
-/* Keyframes for popping in and fading out */
+/* Pop in and out */
 @keyframes fadeInPop {
     0% {
         opacity: 0;
@@ -11,18 +11,18 @@
     }
 }
 
-/* New keyframe for opening effect */
+/* Opening affect */
 @keyframes openHorizontally {
     0% {
-        transform: scaleX(0); /* Start with zero width */
-        opacity: 0; /* Hidden at the start */
+        transform: scaleX(0);
+        opacity: 0;
     }
     50% {
-        opacity: 1; /* Fade in halfway through */
+        opacity: 1;
     }
     100% {
-        transform: scaleX(1); /* Full width */
-        opacity: 1; /* Fully visible */
+        transform: scaleX(1);
+        opacity: 1;
     }
 }
 
@@ -82,7 +82,7 @@ html, body {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Unified Header Container */
+/* Header Container */
 .header-container {
     position: fixed;
     top: 0;
@@ -98,22 +98,6 @@ html, body {
     height: 75px;
 }
 
-/* Preserved Original Navigation Styling */
-.persistent-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    height: 50px;
-}
-
-.persistent-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-}
 
 /* Header Styling */
 header {
@@ -140,9 +124,9 @@ header img.head-logo {
     height: auto;
     filter: invert(100%);
     position: relative;
-    top: -57px;
+    top: -38px;
     pointer-events: none;
-    animation-fill-mode: forwards; /* Keep final state */
+    animation-fill-mode: forwards;
 }
 
 /* Show logo when header-container is scrolled */
@@ -154,24 +138,38 @@ header img.head-logo {
 
 /* Navigation Left and Right Sections */
 .nav-left {
-    margin-top: -15px; 
+    margin-top: 20px; 
     display: flex;
-    padding-left: 160px; /* Adjust this value to bring it closer to the center */
-}
-
-.nav-right {
-    margin-top: -15px; 
-    display: flex;
-    padding-right: 160px; /* Adjust this value to bring it closer to the center */
+    padding-left: 160px;
 }
 
 
-.nav-left ul, .nav-right ul {
+
+
+
+
+/* Persistent Navigation Container */
+.persistent-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 50px;
+}
+
+/* Navigation List Styling */
+.persistent-nav ul {
     list-style-type: none;
-    margin: 0;
+    margin: 0 15px;
     padding: 0;
     display: flex;
-    gap: 3px;
+    gap: 20px; /* No extra space between items */
+}
+
+/* Navigation List Item Styling */
+.persistent-nav ul li {
+    margin: 0;
+    padding: 0;
 }
 
 /* Navigation Links */
@@ -179,12 +177,14 @@ header img.head-logo {
     color: #ffffff;
     text-decoration: none;
     font-family: 'Times New Roman', Times, serif;
-    padding: 10px 15px;
+    padding: 5px 10px;
     display: block;
     font-size: 18px;
     letter-spacing: 1px;
     position: relative;
     cursor: pointer;
+    text-align: center;
+    margin-right: 10px; 
 }
 
 /* Hover Effect */
@@ -205,13 +205,29 @@ header img.head-logo {
     left: 25%;
 }
 
+.nav-right {
+    margin-top: 20px; 
+    display: flex;
+    padding-right: 160px;
+}
+
+
+.nav-left ul, .nav-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0px;
+}
+
+
 /* Search Section Styling */
 #search-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #D2B48C;
-    padding: 15px;
+    background-color: rgba(210, 180, 140, 0.9); /* Light tan with slight transparency */
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     width: 90%;
@@ -219,58 +235,244 @@ header img.head-logo {
     margin: 20px auto;
 }
 
-#search-bar form {
+/* Style for "Book" title */
+#search-section h2 {
+    font-size: 48px;
+    font-family: 'Alex Brush', cursive;
+    color: #8B0000; /* Dark red color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+#search-section label {
+    color: #8B0000;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Transparent and styled Date Pickers */
+#search-bar input[type="date"] {
+    background-color: transparent;
+    color: #000;
+    font-size: 28px;
+    border: none;
+    border-bottom: 1px solid #8B0000;
+    padding: 5px 0;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+}
+
+#search-bar input[type="date"]:focus {
+    outline: none;
+    border-bottom: 1px solid #D2B48C;
+}
+
+/* Adult and Children Counters */
+.guest-fields {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
     justify-content: center;
 }
 
-#search-bar .guest-fields {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+#search-bar input[type="number"] {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-size: 28px;
+    width: 40px;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
 }
 
+.quantity-control {
+    background: none;
+    border: none;
+    font-size: 20px; /* Font size for buttons */
+    color: #8B0000; /* Button color */
+    cursor: pointer;
+    width: 25px; /* Adjust width to make it more compact */
+    height: 25px; /* Adjust height to make it more compact */
+    display: inline-flex; /* Ensure alignment with number */
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Remove any extra spacing */
+    padding: 0; /* Remove padding */
+    transition: color 0.3s ease;
+    vertical-align: middle; /* Align with the number vertically */
+}
+
+.guest-fields {
+    display: flex;
+    align-items: center;
+    gap: -10px; /* Remove gap to bring elements closer together */
+}
+
+/* Hover effect for plus/minus buttons */
+.quantity-control:hover {
+    color: #4B0000 !important; /* Darker maroon red on hover */
+}
 .submit-button-container {
-    width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
+/* Check Availability button styling without background box */
 #search-bar button {
-    background-color: transparent;
-    color: #000;
+    background-color: transparent !important; /* Ensure background is transparent */
+    border: none !important; /* Remove border */
+    box-shadow: none !important; /* Remove any shadow */
+    color: #8B0000; /* Button text color */
     font-weight: bold;
-    border: none;
-    border-bottom: 2px solid #000;
-    padding: 8px 15px;
-    cursor: pointer;
     font-size: 18px;
+    padding: 10px 20px; /* Add padding for clickable area */
+    font-family: 'Poiret One', sans-serif;
+    text-align: center;
+    cursor: pointer;
     transition: color 0.3s ease;
 }
 
 #search-bar button:hover {
-    color: #8B0000;
+    color: #D2B48C; /* Hover effect */
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+
+
+#search-bar input[type="date"] {
+    background-color: transparent;
+    color: #000; /* Keep text color black */
+    font-size: 28px;
+    border: none; /* Remove any underline or border */
+    padding: 5px 0;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Focus state for date input to ensure no border */
+#search-bar input[type="date"]:focus {
+    outline: none;
+    border: none;
+}
+
+
+
+/* Base styling for Check Availability button */
+#search-bar button.check-availability {
+    background-color: transparent !important; /* Transparent background */
+    border: none !important; /* Remove border */
+    box-shadow: none !important; /* Remove shadow */
+    color: #000000; /* Set text color to black */
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 20px; /* Add padding for clickable area */
+    font-family: 'Poiret One', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    position: relative; /* Necessary for pseudo-element positioning */
+    transition: color 0.3s ease; /* Ensure no hover change to color */
+}
+
+/* Underline effect using pseudo-element */
+#search-bar button.check-availability::before {
+    content: "";
+    position: absolute;
+    bottom: -2px; /* Position below the button text */
+    left: 50%; /* Start from the center */
+    width: 80%; /* Adjust to match the text width */
+    height: 2px;
+    background-color: #000000; /* Line color set to black */
+    transform: translateX(-50%) scaleX(1); /* Center the line and scale to full width */
+    transform-origin: center; /* Ensure it shrinks from the center */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+/* Shrink underline on hover */
+#search-bar button.check-availability:hover::before {
+    transform: translateX(-50%) scaleX(0.5); /* Shrink the underline to 50% width */
+}
+
+
+/* Remove spinner controls in Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-input[type=number] {
+/* Remove spinner controls in Firefox */
+input[type="number"] {
     -moz-appearance: textfield;
 }
 
-#search-section a, #search-section button, #search-section label {
+
+
+/* Additional Adjustments for Overall Page */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+}
+
+/* Transparent Background Pattern */
+.pattern-container {
+    background-color: transparent;
+    background-image: url('hotel-wallpaper-black.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+/* Header and Navigation Styling */
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease, height 0.3s ease;
+    z-index: 100;
+    height: 50px;
+}
+
+.header-container.scrolled {
+    background-color: #000000;
+    height: 75px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    z-index: 1000;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu ul li {
+    margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+    color: #ffffff;
+    font-size: 20px;
     text-decoration: none;
-    border: none;
-    outline: none;
-    color: inherit;
 }
 
 /* Diagonal Gallery Layout */
@@ -281,10 +483,9 @@ input[type=number] {
     justify-items: center;
 }
 
-/* Default state with transition for smooth scaling */
 #home-section img,
 .diagonal-item img {
-    transition: transform 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease;
 }
 
 /* Hover effect to slightly enlarge images */
@@ -362,8 +563,8 @@ main p {
 
 /* Footer Section Styling */
 .footer {
-    background-color: #222; /* Dark background to match the header and general theme */
-    color: #f5f5f5; /* Light text color for contrast */
+    background-color: #222; 
+    color: #f5f5f5;
     padding: 20px 10px;
     text-align: center;
     font-family: 'Poiret One', sans-serif;
@@ -374,32 +575,31 @@ main p {
 
 .footer p {
     margin: 5px 0;
-    color: #cfcfcf; /* Slightly muted color for a softer look */
+    color: #cfcfcf; 
 }
 
 .footer a {
-    color: #D2B48C; /* Use a warm tone to match the theme */
+    color: #D2B48C;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .footer a:hover {
-    color: #8B6508; /* Darker shade for hover effect */
+    color: #8B6508;
 }
 
-/* Add a subtle border at the top for separation */
 .footer {
     border-top: 1px solid #444;
 }
+
 /* Carousel button styles */
 .carousel {
     position: relative;
     width: 100%;
-    max-width: 600px; /* Adjust based on your layout */
+    max-width: 600px;
     margin: auto;
 }
-
 
 
 .carousel-images img {
@@ -408,7 +608,7 @@ main p {
 }
 
 .carousel-images img:first-child {
-    display: block; /* Show only the first image initially */
+    display: block; 
 }
 
 /* Base style for carousel buttons */
@@ -416,17 +616,16 @@ main p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: transparent; /* No background block */
-    color: #ffffffcc; /* Darker arrow color */
+    background-color: transparent; 
+    color: #ffffffcc;
     border: none;
-    font-size: 32px; /* Increase size for bigger arrows */
+    font-size: 32px; 
     padding: 10px;
     cursor: pointer;
     z-index: 10;
-    transition: color 0.3s; /* Smooth transition for color change */
+    transition: color 0.3s; 
 }
 
-/* Position the previous button on the left and the next button on the right */
 .carousel-button.prev {
     left: 10px;
 }
@@ -435,45 +634,44 @@ main p {
     right: 10px;
 }
 
-/* Darken arrow color on hover */
 .carousel-button:hover {
-    color: #8B6508;/* Fully dark black on hover */
+    color: #8B6508;
 }
 
 #room-results .carousel-images img:hover {
-    transform: none; /* Remove any hover transformation like scale or rotate */
-    filter: none; /* Remove any hover filter like brightness or contrast */
-    transition: none; /* Disable transition on hover */
+    transform: none; 
+    filter: none;
+    transition: none; 
 }
 
 .text-content ul {
-    list-style-type: none; /* Remove default bullets */
+    list-style-type: none;
     padding: 0;
-    margin: 15px 0; /* Add spacing above and below the list */
+    margin: 15px 0;
 }
 
 .text-content ul li {
     position: relative;
-    padding-left: 28px; /* Add space for a custom icon */
-    margin-bottom: 10px; /* Add space between items */
+    padding-left: 28px; 
+    margin-bottom: 10px; 
     font-size: 0.95em;
-    color: #D2B48C; /* Warm tone to match theme */
+    color: #D2B48C;
     line-height: 1.6;
     font-family: 'Poiret One', sans-serif;
 }
 
 /* Custom icon for each feature */
 .text-content ul li::before {
-    content: "✔"; /* Add a checkmark or any icon of choice */
+    content: "✔";
     position: absolute;
     left: 0;
-    color: #8B6508; /* Accent color for the icon */
+    color: #8B6508;
     font-size: 1.1em;
 }
 
-/* Smooth hover effect on room features */
+/* hover effect on room features */
 .text-content ul li:hover {
-    color: #8B6508; /* Match the hover color of navigation links */
+    color: #8B6508; 
     transition: color 0.3s ease;
 }
 
@@ -583,41 +781,43 @@ main p {
     text-decoration: none;
 }
 
+.mobile-menu-button {
+    display: none;
+}
 
-/* Hide the main background image section on mobile */
+
 @media (max-width: 768px) {
     #home-section {
         display: none !important; /* Hide the background section on mobile */
     }
     
-    /* Optional: Adjust main content padding to ensure content appears at the top */
     .pattern-container {
-        padding-top: 20px; /* Add padding if needed */
+        padding-top: 20px;
     }
 
     .header-container {
         position: fixed; /* Fix the header to the top */
         top: 0;
         width: 100%;
-        background-color: #000000; /* Ensure a visible background */
+        background-color: #000000;
         z-index: 100;
-        height: 75px; /* Adjust height as needed */
+        height: 75px;
     }
 
     header img.head-logo {
-        animation: none; /* Disable any animations */
-        opacity: 1; /* Ensure the logo is always visible */
-        transform: none; /* Reset any transformations */
-        pointer-events: auto; /* Ensure it’s clickable */
+        animation: none; 
+        opacity: 1; 
+        transform: none; 
+        pointer-events: auto; 
         margin-top: 130px;
     }
 
     .pattern-container, main, #search-section {
-        padding-top: 75px; /* Add space equal to the header's height */
+        padding-top: 75px; 
     }
     #search-section {
-        padding: 10px; /* Reduce padding */
-        width: 100%; /* Full width on mobile */
+        padding: 10px; 
+        width: 100%; 
     }
 
     #search-bar form {
@@ -632,15 +832,15 @@ main p {
 
     .guest-fields label {
         margin-bottom: 5px;
-        font-size: 14px; /* Adjust label font size for mobile */
+        font-size: 14px; 
     }
 
     #search-bar input[type="number"] {
-        width: 100%; /* Full width for number inputs */
+        width: 100%; 
     }
 
     .submit-button-container {
-        margin-top: 10px; /* Adjust spacing for better fit */
+        margin-top: 10px; 
     }
 
     .mobile-menu-button {
@@ -652,6 +852,7 @@ main p {
         top: 20px;
         right: 20px;
         z-index: 1001;
+        /* Initially hide mobile menu button on larger screens */
     }
 
     .mobile-menu.open {

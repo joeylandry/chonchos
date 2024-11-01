@@ -11,23 +11,20 @@
 </head>
 <body>
 
-    <!-- Full-screen background section with centered logo -->
     <div id="home-section" style="background-image: url('rooms.webp'); background-position: -17px center;">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
         </a>
     </div>
 
-    <!-- Pattern Container for sections under the main background -->
     <div class="pattern-container">
 
         <div class="header-container">
-            <!-- Mobile Menu Button (visible on mobile screens) -->
+    
             <div class="mobile-menu-button" onclick="toggleMobileMenu()">
-                &#9776; <!-- Hamburger icon -->
+                &#9776; 
             </div>
         
-            <!-- Persistent navigation for larger screens -->
             <nav class="persistent-nav">
                 <div class="nav-left">
                     <ul>
@@ -46,7 +43,6 @@
                 </div>
             </nav>
             
-            <!-- Mobile Menu (hidden by default, shown when toggled) -->
             <nav class="mobile-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -59,7 +55,6 @@
                 </ul>
             </nav>
         
-            <!-- Logo section -->
             <header class="header">
                 <a href="index.html" class="logo-link">
                     <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
@@ -97,7 +92,7 @@
 
                     <!-- Search Button on a New Line -->
                     <div class="submit-button-container">
-                        <button type="button" onclick="checkAvailability()">Check Availability</button>
+                        <button type="button" class="check-availability" onclick="checkAvailability()">Check Availability</button>
                     </div>
                 </form>
             </div>
@@ -113,7 +108,7 @@
             <br>
         
             <section class="diagonal-gallery">
-                <!-- Rooms Section -->
+    
                 <div class="diagonal-item">
                         <img src="room1.webp" alt="Luxurious rooms at Chonchos Inn">
                     <div class="text-content">
@@ -122,7 +117,7 @@
                     </div>
                 </div>
         
-                <!-- Restaurant Section -->
+           
                 <div class="diagonal-item reverse">
                         <img src="room2.webp" alt="Dining at Chonchos Inn">
                     <div class="text-content">
@@ -131,7 +126,7 @@
                     </div>
                 </div>
         
-                <!-- Health & Wellness Section -->
+               
                 <div class="diagonal-item">
                         <img src="room3.webp" alt="Health and wellness facilities at Chonchos Inn">
                     <div class="text-content">
@@ -142,17 +137,25 @@
             </section>
         </main>
 
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-            <p><a href="contact.html">Contact Us</a></p>
-        </footer>
+         <!-- Footer Section -->
+    <footer class="footer">
+        <p>Chonchos Inn | 1-800-Choncho | 50 Sunset Ave, Nantucket MA</p>
+        <p><a href="contact.html?scrollToForm=true">Contact Us</a></p>
+    </footer>
 
-    </div> <!-- End of Pattern Container -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- JavaScript to handle quantity controls -->
     <script src="script.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#search-section').hide();
+
+            $('#search-section').slideDown(1200); 
+        });
+
         function increase(fieldId) {
             const field = document.getElementById(fieldId);
             if (field) {
@@ -170,32 +173,60 @@
             }
         }
 
-    function checkAvailability() {
-    const adults = parseInt(document.getElementById("adults").value) || 0;
-    const children = parseInt(document.getElementById("children").value) || 0;
-    const totalGuests = adults + children;
+     function checkAvailability() {
+            // Get form values
+            const startDate = document.getElementById("start-date").value;
+            const endDate = document.getElementById("end-date").value;
+            const adults = parseInt(document.getElementById("adults").value) || 0;
+            const children = parseInt(document.getElementById("children").value) || 0;
 
-    let availableRooms = [];
-    if (totalGuests <= 2) {
-        availableRooms = ["Honeymoon", "Standard", "Deluxe", "Suite"];
-    } else if (totalGuests <= 4) {
-        availableRooms = ["Standard", "Deluxe", "Suite"];
-    } else if (totalGuests <= 6) {
-        availableRooms = ["Deluxe", "Suite"];
-    } else {
-        availableRooms = ["Suite"];
-    }
+            // Check if dates are filled
+            if (!startDate) {
+                alert("Please select an arrival date.");
+                return;
+            }
+            if (!endDate) {
+                alert("Please select a departure date.");
+                return;
+            }
 
-    const queryParams = new URLSearchParams({
-        rooms: availableRooms.join(","),
-        start_date: document.getElementById("start-date").value,
-        end_date: document.getElementById("end-date").value,
-        adults: adults,
-        children: children,
-    });
+            // Check if departure date is after arrival date
+            if (new Date(startDate) >= new Date(endDate)) {
+                alert("Departure date must be after arrival date.");
+                return;
+            }
 
-    window.location.href = `room_search.html?${queryParams.toString()}`;
-}
+            // Check if at least 1 adult is selected
+            if (adults < 1) {
+                alert("Please select at least one adult.");
+                return;
+            }
+
+            // Calculate total guests and determine available rooms
+            const totalGuests = adults + children;
+            let availableRooms = [];
+            if (totalGuests <= 2) {
+                availableRooms = ["Honeymoon", "Standard", "Deluxe", "Suite"];
+            } else if (totalGuests <= 4) {
+                availableRooms = ["Standard", "Deluxe", "Suite"];
+            } else if (totalGuests <= 6) {
+                availableRooms = ["Deluxe", "Suite"];
+            } else {
+                availableRooms = ["Suite"];
+            }
+
+            // Build query parameters
+            const queryParams = new URLSearchParams({
+                rooms: availableRooms.join(","),
+                start_date: startDate,
+                end_date: endDate,
+                adults: adults,
+                children: children,
+            });
+
+            // Redirect to room search page with query parameters
+            window.location.href = `room_search.html?${queryParams.toString()}`;
+        }
     </script>
 
 </body>

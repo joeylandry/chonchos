@@ -11,24 +11,19 @@
 </head>
 <body>
 
-    <!-- Full-screen background section with centered logo -->
     <div id="home-section" style="background-image: url('lobby.webp'); background-position: -17px center;">
         <a href="index.html">
             <img src="logo.png" alt="Logo" class="logo-visible">
         </a>
     </div>
 
-    <!-- Pattern Container for sections under the main background -->
     <div class="pattern-container">
 
-      <!-- Header Container for unified header and nav appearance -->
 <div class="header-container">
-    <!-- Mobile Menu Button (visible on mobile screens) -->
     <div class="mobile-menu-button" onclick="toggleMobileMenu()">
-        &#9776; <!-- Hamburger icon -->
+        &#9776; 
     </div>
 
-    <!-- Persistent navigation for larger screens -->
     <nav class="persistent-nav">
         <div class="nav-left">
             <ul>
@@ -47,7 +42,6 @@
         </div>
     </nav>
     
-    <!-- Mobile Menu (hidden by default, shown when toggled) -->
     <nav class="mobile-menu">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -60,7 +54,6 @@
         </ul>
     </nav>
 
-    <!-- Logo section -->
     <header class="header">
         <a href="index.html" class="logo-link">
             <img src="head_logo.png" alt="Chonchos Inn Logo" class="head-logo">
@@ -68,9 +61,8 @@
     </header>
 </div>
 
-        <br>
+<br>
 
-        <!-- Search Section -->
         <div id="search-section">
             <h2>Book</h2>
             <div id="search-bar">
@@ -83,7 +75,7 @@
                     <label for="end-date">Departure</label>
                     <input type="date" id="end-date" name="end_date" required>
 
-                    <!-- Adults and Children on the same line -->
+                    <!-- Adults and Children -->
                     <div class="guest-fields">
                         <label for="adults">Adults</label>
                         <button type="button" class="quantity-control" onclick="decrease('adults')">-</button>
@@ -96,10 +88,11 @@
                         <button type="button" class="quantity-control" onclick="increase('children')">+</button>
                     </div>
 
-                    <!-- Search Button on a New Line -->
+                    <!-- Search button on a new line -->
                     <div class="submit-button-container">
-                        <button type="button" onclick="checkAvailability()">Check Availability</button>
+                        <button type="button" class="check-availability" onclick="checkAvailability()">Check Availability</button>
                     </div>
+                    <br>
                 </form>
             </div>
         </div>
@@ -149,26 +142,23 @@
             </section>
         </main>
 
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p>Chonchos Inn | 1-800-Choncho | 123 Silly Street, Falmouth, MA</p>
-            <p><a href="contact.html">Contact Us</a></p>
-        </footer>
+         <!-- Footer Section -->
+    <footer class="footer">
+        <p>Chonchos Inn | 1-800-Choncho | 50 Sunset Ave, Nantucket MA</p>
+        <p><a href="contact.html?scrollToForm=true">Contact Us</a></p>
+    </footer>
 
-    </div> <!-- End of Pattern Container -->
+    </div> 
 
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- JavaScript to handle quantity controls and animations -->
     <script src="script.js"></script>
     <script>
         $(document).ready(function() {
-            // Hide the search section initially
             $('#search-section').hide();
 
-            // Slide down the search section on page load
-            $('#search-section').slideDown(1200); // Adjust duration as needed
+            $('#search-section').slideDown(1200); 
         });
 
         function increase(fieldId) {
